@@ -36,7 +36,9 @@ function App() {
       // Set the matched cards' matched state to true
       setCards((prevCards) => {
         return prevCards.map((card) => {
-          card.image === pickOne.image ? { ...card, matched: true } : card;
+          return card.image === pickOne.image
+            ? { ...card, matched: true }
+            : card;
         });
       });
       handleTurn();
