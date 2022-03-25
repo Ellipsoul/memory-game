@@ -4,6 +4,7 @@ import "./App.css";
 import shuffle from "./utilities/shuffle";
 import Card from "./components/Card";
 import Header from "./components/Header";
+import useAppBadge from "./hooks/useAppBadge";
 
 function App() {
   const [cards, setCards] = useState(shuffle); // Shuffled list of cards
@@ -13,6 +14,7 @@ function App() {
   const [disabled, setDisabled] = useState(false); // Delay handler
 
   const [wins, setWins] = useState(0); // Track number of wins
+  const [setBadge, clearBadge] = useAppBadge(); // Update the badge on the Native App
 
   // Select a card
   const handleClick = (card) => {
@@ -61,6 +63,7 @@ function App() {
       setWins(wins + 1);
       handleTurn();
       setCards(shuffle);
+      setBadge();
     }
   }, [cards, wins]);
 
@@ -69,6 +72,7 @@ function App() {
     setWins(0);
     handleTurn();
     setCards(shuffle);
+    clearBadge();
   };
 
   // Simple grid of 4 by 4 cards with a header
