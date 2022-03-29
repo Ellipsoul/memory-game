@@ -7,6 +7,7 @@ const useAppBadge = () => {
 
   // Update the badge on the Native App
   const setBadge = () => {
+    if (!navigator) return;
     setCounter(counter + 1); // Increment the wins count
     if (navigator.setAppBadge) {
       // PWA installed app
